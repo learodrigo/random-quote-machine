@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>Random quote machine</title>
+  <style>
+    .card {
+      min-height: 102px;
+    }
+    .slide-fade-enter-active {
+      transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+      transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to {
+      transform: translateX(10px);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-sm-6 offset-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-text blockquote">
+              <span v-bind:class="{ animate: animating }">"{{ currentQuote }}"</span>
+              <transition name="slide-fade">
+                <b style="display: block; margin-top: 8px;" v-if="show">Bob Ross</b>
+              </transition>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3 d-flex justify-content-center mt-3">
+        <button @click="newQuote" class="btn btn-primary">
+          New quote
+        </button>
+        <button @click="show = !show" class="btn btn-primary ml-3">
+          Toggle author
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./quotes.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
